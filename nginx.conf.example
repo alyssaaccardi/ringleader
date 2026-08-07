@@ -1,0 +1,19 @@
+# /etc/nginx/sites-available/ringleader
+# After writing: ln -s ../sites-available/ringleader /etc/nginx/sites-enabled/
+#                nginx -t && systemctl reload nginx
+#                certbot --nginx -d ringleader.answeringlegal.com
+
+server {
+    server_name ringleader.answeringlegal.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:3002;
+        proxy_http_version 1.1;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    listen 80;
+}

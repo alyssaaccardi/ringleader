@@ -1,0 +1,139 @@
+:root {
+  --bg:         #0e1520;
+  --panel:      #141c2b;
+  --ink:        #f0f4ff;
+  --muted:      #8899bb;
+  --dim:        #4a5a7a;
+  --accent:     #00c9b1;
+  --accent-2:   #1a6fe8;
+  --danger:     #ef4444;
+  --border:     rgba(255, 255, 255, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0; padding: 0; min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Header ─── */
+.rl-header {
+  border-bottom: 1px solid var(--border);
+  background: rgba(20, 28, 43, 0.7);
+  backdrop-filter: blur(10px);
+  position: sticky; top: 0; z-index: 10;
+}
+.rl-header-inner {
+  max-width: 800px; margin: 0 auto;
+  display: flex; align-items: center; gap: 24px;
+  padding: 14px 24px;
+}
+.rl-brand {
+  font-weight: 700; font-size: 18px; letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.rl-nav { display: flex; gap: 16px; flex: 1; }
+.rl-nav a { color: var(--muted); font-size: 14px; }
+.rl-nav a:hover { color: var(--ink); text-decoration: none; }
+.rl-user { display: flex; align-items: center; gap: 12px; }
+.rl-user-name { font-size: 13px; color: var(--muted); }
+.rl-logout {
+  background: none; border: 1px solid var(--border); color: var(--muted);
+  padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px;
+}
+.rl-logout:hover { color: var(--ink); border-color: rgba(255,255,255,0.2); }
+
+/* ─── Main ─── */
+.rl-main { max-width: 800px; margin: 0 auto; padding: 32px 24px 64px; }
+.rl-loading, .rl-empty { padding: 60px 24px; text-align: center; color: var(--muted); }
+.rl-link { color: var(--accent); }
+.rl-page-title { font-size: 28px; margin: 0 0 24px; }
+
+/* ─── Login ─── */
+.rl-login {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.rl-login-card {
+  max-width: 400px; width: 100%; padding: 40px 32px;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+  text-align: center;
+}
+.rl-login-card h1 { margin: 0 0 8px; font-size: 32px; letter-spacing: -0.02em; }
+.rl-login-sub { margin: 0 0 32px; color: var(--muted); font-size: 15px; }
+.rl-login-btn {
+  display: inline-block; padding: 12px 28px;
+  background: var(--accent); color: #062018; font-weight: 600;
+  border-radius: 8px; text-decoration: none;
+}
+.rl-login-btn:hover { background: #00e0c6; text-decoration: none; }
+.rl-login-error {
+  margin: 24px 0 0; padding: 12px 16px;
+  background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 8px; color: #f8b3b3; font-size: 13px; text-align: left;
+}
+
+/* ─── Issue ─── */
+.rl-issue { padding: 8px 0; }
+.rl-issue-meta {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--muted); font-size: 13px; margin-bottom: 12px;
+}
+.rl-issue-badge {
+  display: inline-block; padding: 2px 8px;
+  background: rgba(0,201,177,0.14); color: var(--accent);
+  border: 1px solid rgba(0,201,177,0.35);
+  border-radius: 999px; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.rl-issue-title { font-size: 36px; margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.1; }
+.rl-issue-author { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+.rl-issue-body { line-height: 1.7; font-size: 16px; color: #d8e0ee; }
+.rl-issue-body h2 { margin-top: 32px; font-size: 22px; }
+.rl-issue-body h3 { margin-top: 24px; font-size: 18px; }
+.rl-issue-body p  { margin: 16px 0; }
+.rl-issue-body a  { color: var(--accent); text-decoration: underline; }
+.rl-issue-body code {
+  background: rgba(255,255,255,0.06); padding: 2px 6px;
+  border-radius: 4px; font-size: 0.9em;
+}
+.rl-issue-body pre {
+  background: rgba(0,0,0,0.4); padding: 16px; border-radius: 8px;
+  overflow-x: auto; border: 1px solid var(--border);
+}
+.rl-issue-body pre code { background: none; padding: 0; }
+.rl-issue-body blockquote {
+  border-left: 3px solid var(--accent); padding-left: 16px;
+  color: var(--muted); margin: 16px 0;
+}
+.rl-issue-body img { max-width: 100%; border-radius: 8px; }
+.rl-issue-body hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+.rl-issue-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+
+/* ─── Archive ─── */
+.rl-archive-list { list-style: none; padding: 0; margin: 0; }
+.rl-archive-item { border-bottom: 1px solid var(--border); }
+.rl-archive-item:last-child { border-bottom: none; }
+.rl-archive-link {
+  display: grid; grid-template-columns: 120px 1fr;
+  gap: 20px; padding: 20px 0;
+  color: var(--ink); text-decoration: none;
+}
+.rl-archive-link:hover { text-decoration: none; }
+.rl-archive-link:hover .rl-archive-title { color: var(--accent); }
+.rl-archive-date { color: var(--muted); font-size: 13px; padding-top: 3px; }
+.rl-archive-title { font-size: 18px; font-weight: 600; display: block; }
+.rl-archive-excerpt { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; line-height: 1.5; }
+
+@media (max-width: 600px) {
+  .rl-archive-link { grid-template-columns: 1fr; gap: 4px; }
+  .rl-issue-title  { font-size: 28px; }
+  .rl-header-inner { gap: 12px; }
+  .rl-user-name    { display: none; }
+}
