@@ -37,11 +37,30 @@ let ISSUES = [];
 
 function loadIssues() {
   if (!fs.existsSync(ISSUES_DIR)) { ISSUES = []; return; }
-  const files = fs.readdirSync(ISSUES_DIR).filter(f => f.endsWith('.md'));
+  const files = fs.readdirSync(ISSUES_DIR).filter(f => /\.(md|html)$/.test(f));
   ISSUES = files.map(file => {
-    const raw = fs.readFileSync(path.join(ISSUES_DIR, file), 'utf8');
+    const raw     = fs.readFileSync(path.join(ISSUES_DIR, file), 'utf8');
+    const isHtml  = file.endsWith('.html');
+    if (isHtml) {
+      const metaMatch = raw.match(/<!--\s*ringleader\s*([\s\S]*?)-->/);
+      let meta = {};
+      if (metaMatch) {
+        try { meta = JSON.parse(metaMatch[1].trim()); }
+        catch (e) { console.warn(`[ringleader] bad JSON in ${file}: ${e.message}`); }
+      }
+      return {
+        type:    'html',
+        slug:    meta.slug    || file.replace(/\.html$/, ''),
+        title:   meta.title   || 'Untitled',
+        date:    meta.date    ? new Date(meta.date).toISOString() : new Date(0).toISOString(),
+        author:  meta.author  || null,
+        excerpt: meta.excerpt || '',
+        html:    raw.replace(/<!--\s*ringleader\s*[\s\S]*?-->\s*/, ''),
+      };
+    }
     const { data, content } = matter(raw);
     return {
+      type:    'markdown',
       slug:    data.slug || file.replace(/\.md$/, ''),
       title:   data.title   || 'Untitled',
       date:    data.date    ? new Date(data.date).toISOString() : new Date(0).toISOString(),

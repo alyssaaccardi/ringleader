@@ -51,7 +51,7 @@ a:hover { text-decoration: underline; }
 .rl-logout:hover { color: var(--ink); border-color: rgba(255,255,255,0.2); }
 
 /* ─── Main ─── */
-.rl-main { max-width: 800px; margin: 0 auto; padding: 32px 24px 64px; }
+.rl-main { max-width: 960px; margin: 0 auto; padding: 32px 24px 64px; }
 .rl-loading, .rl-empty { padding: 60px 24px; text-align: center; color: var(--muted); }
 .rl-link { color: var(--accent); }
 .rl-page-title { font-size: 28px; margin: 0 0 24px; }
@@ -115,6 +115,16 @@ a:hover { text-decoration: underline; }
 .rl-issue-body img { max-width: 100%; border-radius: 8px; }
 .rl-issue-body hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 .rl-issue-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+
+/* HTML issues (iframe-based) — full-bleed within main column */
+.rl-issue-html .rl-issue-meta { margin-bottom: 16px; }
+.rl-issue-meta-link { margin-left: auto; color: var(--muted); font-size: 13px; }
+.rl-issue-meta-link:hover { color: var(--ink); text-decoration: none; }
+.rl-issue-frame {
+  width: 100%; border: none; display: block;
+  background: transparent; overflow: hidden;
+  border-radius: 6px;
+}
 
 /* ─── Archive ─── */
 .rl-archive-list { list-style: none; padding: 0; margin: 0; }
