@@ -14,7 +14,7 @@ export default function ArchivePage() {
 
   return (
     <div className="rl-archive">
-      <h1 className="rl-page-title">Archive</h1>
+      <h1 className="rl-page-title">The Archive</h1>
       <ul className="rl-archive-list">
         {issues.map(i => (
           <li key={i.slug} className="rl-archive-item">

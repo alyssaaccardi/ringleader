@@ -20,7 +20,7 @@ function Header() {
   return (
     <header className="rl-header">
       <div className="rl-header-inner">
-        <Link to="/" className="rl-brand">Ringleader</Link>
+        <Link to="/" className="rl-brand">The Ring <span>Leader</span></Link>
         <nav className="rl-nav">
           <Link to="/">Current</Link>
           <Link to="/archive">Archive</Link>

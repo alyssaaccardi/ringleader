@@ -13,8 +13,9 @@ export default function LoginPage() {
   return (
     <div className="rl-login">
       <div className="rl-login-card">
-        <h1>Ringleader</h1>
-        <p className="rl-login-sub">The Answering Legal internal newsletter.</p>
+        <div className="rl-login-kicker">Answering Legal · Monthly Newsletter</div>
+        <h1>The Ring <span>Leader</span></h1>
+        <p className="rl-login-sub">Sign in with your Answering Legal account.</p>
         <a href="/auth/google" className="rl-login-btn">Sign in with Google</a>
         {wrongDomain && (
           <p className="rl-login-error">
