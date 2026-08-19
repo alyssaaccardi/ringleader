@@ -204,11 +204,43 @@
     <div style="font-family:Archivo, sans-serif; font-size:11.5px; letter-spacing:.1em; color:#8E9AB4">Answering Legal · Monthly Company Newsletter · July 2026</div>
     <div style="display:flex; align-items:center; justify-content:center; gap:9px; flex-wrap:wrap; margin-top:2px">
       <span style="font-family:Archivo, sans-serif; font-size:12px; font-weight:600; letter-spacing:.02em; color:#D9A32B; background:rgba(217,163,43,.16); padding:2px 7px; border-radius:3px">@Leaders</span>
-      <span style="font-family:Archivo, sans-serif; font-size:11.5px; letter-spacing:.1em; color:#FBF7EC; border-bottom:1px solid rgba(251,247,236,.35)">keep on rollin', you know what time it is — submit your team's update for next month →</span>
+      <button id="rl-submit-trigger" type="button" style="all:unset; cursor:pointer; font-family:Archivo, sans-serif; font-size:11.5px; letter-spacing:.1em; color:#FBF7EC; border-bottom:1px solid rgba(251,247,236,.35); transition:color .18s ease, border-color .18s ease" onmouseover="this.style.color='#D9A32B'; this.style.borderColor='#D9A32B'" onmouseout="this.style.color='#FBF7EC'; this.style.borderColor='rgba(251,247,236,.35)'">keep on rollin', you know what time it is — submit your team's update for next month →</button>
     </div>
     <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(251,247,236,.15); max-width:560px; font-family:Archivo, sans-serif; font-size:12.5px; line-height:1.65; color:#AEB8CC; text-align:center">Notice any typos or grammatical errors? That's because this wasn't produced by our Marketing Team.</div>
   </div>
 
 </div>
 </div>
+
+<!-- SUBMIT MODAL -->
+<div id="rl-submit-modal" role="dialog" aria-modal="true" aria-labelledby="rl-submit-title" style="display:none; position:fixed; inset:0; z-index:9999; align-items:flex-start; justify-content:center; padding:36px 16px; overflow-y:auto; background:rgba(22,35,63,.88); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px)">
+  <div style="background:#FBF7EC; border-top:3px solid #D9A32B; width:100%; max-width:820px; margin:auto; box-shadow:0 30px 80px rgba(0,0,0,.35); position:relative">
+    <button id="rl-submit-close" type="button" aria-label="Close" style="position:absolute; top:12px; right:12px; background:#16233F; color:#D9A32B; border:none; width:34px; height:34px; border-radius:50%; font-family:Archivo, sans-serif; font-size:20px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(0,0,0,.25)">×</button>
+    <div style="padding:32px 42px 20px; border-bottom:1px solid #E4D9BE">
+      <div style="font-family:Archivo, sans-serif; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:#8A7A4E; margin-bottom:8px">Submit for next issue</div>
+      <div id="rl-submit-title" style="font-family:'Libre Caslon Display', Georgia, serif; font-size:26px; line-height:1.2; color:#16233F">Send in your team's update</div>
+      <div style="font-size:14px; line-height:1.6; color:#464F63; font-weight:300; margin-top:8px; max-width:600px">Wins, shout-outs, photos — anything worth the whole company hearing about. Deadline is the last day of the month.</div>
+    </div>
+    <iframe title="Submit your team's update" src="https://forms.monday.com/forms/embed/f1278e74989b01582fa5322607a9d6d1?r=use1" style="border:none; width:100%; height:640px; display:block; background:#FBF7EC"></iframe>
+    <div style="padding:14px 42px 22px; text-align:center; font-family:Archivo, sans-serif; font-size:11.5px; letter-spacing:.02em; color:#8A7A4E; background:#FBF7EC">
+      Form not loading? <a href="https://forms.monday.com/forms/f1278e74989b01582fa5322607a9d6d1?r=use1" target="_blank" rel="noopener noreferrer" style="color:#16233F; font-weight:700; border-bottom:1px solid #D9A32B; text-decoration:none">Open it in a new tab →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var trigger = document.getElementById('rl-submit-trigger');
+  var modal   = document.getElementById('rl-submit-modal');
+  var closeBtn = document.getElementById('rl-submit-close');
+  if (!trigger || !modal || !closeBtn) return;
+  function open()  { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function close() { modal.style.display = 'none'; document.body.style.overflow = ''; }
+  trigger.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && modal.style.display !== 'none') close(); });
+})();
+</script>
+
 </body></html>
