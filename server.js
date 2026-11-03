@@ -111,6 +111,9 @@ app.get('/api/issues/:slug', requireAuth, (req, res) => {
   res.json(issue);
 });
 
+/* ─── Media (auth-gated, supports range requests) ─────────────────────────── */
+app.use('/media', requireAuth, express.static(path.join(__dirname, 'media')));
+
 /* ─── Static client + SPA fallback ────────────────────────────────────────── */
 app.use(express.static(CLIENT_DIR));
 app.get('*', (req, res) => {
